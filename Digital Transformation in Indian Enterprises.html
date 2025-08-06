@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Transformation in Indian Enterprises - Enterprise Lens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Space+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #05668d;
+            --secondary-blue: #58a4b0;
+            --accent-red: #ff6b6b;
+            --accent-green: #004d40;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        .font-space-grotesk {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .font-space-mono {
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .logo-text {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+        .source-link {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .source-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            background: white;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-button:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 2rem;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="index.html" class="back-button">
+        ← Back to Reports
+    </a>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+        <!-- Header with Logo -->
+        <header class="text-center mb-12 md:mb-20 pt-8">
+            <div class="mb-8">
+                <h1 class="text-4xl md:text-6xl font-bold logo-text mb-2 font-space-grotesk">
+                    Enterprise Lens
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 font-medium">
+                    Research at Sarvarth
+                </p>
+            </div>
+            
+            <h2 class="text-4xl md:text-6xl font-bold text-[#05668d] mb-4 font-space-grotesk">India's Digital Revolution</h2>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">This report explores how Indian companies are using Cloud, AI, and Automation to innovate and grow. It visualizes key data on technology adoption, investment returns, and transformation timelines, drawing on insights from NASSCOM, Deloitte, and PwC.</p>
+            
+            <div class="mt-8 bg-white p-8 rounded-2xl shadow-lg max-w-md mx-auto card">
+                <p class="text-2xl font-semibold text-[#05668d] mb-2 font-space-grotesk">Total Tech Industry Revenue (FY2024)</p>
+                <p class="text-7xl font-black gradient-text">$254B</p>
+                <a href="https://nasscom.in/knowledge-center/publications/technology-sector-india-2024-resilience-reinvention-and-reimagination" target="_blank" class="source-link">Source: NASSCOM [1]</a>
+            </div>
+        </header>
+
+        <main>
+            <section id="pillars" class="mb-16 md:mb-24">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#05668d] mb-12 font-space-grotesk">The Three Pillars of Transformation</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <div class="card p-6 flex flex-col">
+                        <h3 class="text-2xl font-bold text-[#58a4b0] mb-4 font-space-grotesk">1. Cloud at the Core</h3>
+                        <p class="text-gray-600 mb-6 flex-grow">Cloud is the foundational bedrock for agility and scale, with adoption widespread but maturity levels varying across the industry.</p>
+                        <div class="chart-container h-64 md:h-72">
+                            <canvas id="cloudAdoptionChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-gray-500 mt-4">SMB Cloud Adoption Status <a href="https://community.nasscom.in/communities/emerging-tech/cloud-computing/unveiling-indias-cloud-potential-journey-towards-1-trillion-economy" target="_blank" class="source-link">[15]</a></p>
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                             <p class="text-lg font-semibold text-center text-[#05668d] font-space-grotesk">The $500 Billion Choice</p>
+                             <p class="text-sm text-center text-gray-500 mb-4">Potential GDP Impact by 2026 <a href="https://nasscom.in/knowledge-center/publications/cloud-next-wave-of-growth-india" target="_blank" class="source-link">[10]</a></p>
+                             <div class="chart-container h-56 md:h-64">
+                                <canvas id="gdpImpactChart"></canvas>
+                             </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-6 flex flex-col">
+                        <h3 class="text-2xl font-bold text-[#ff6b6b] mb-4 font-space-grotesk">2. The Automation Dividend</h3>
+                        <p class="text-gray-600 mb-6 flex-grow">Automation is the key lever for efficiency, but a significant gap exists between technology investment and value realization.</p>
+                        <div class="text-center my-6">
+                            <p class="text-6xl font-black text-[#ff6b6b]">92%</p>
+                            <p class="text-md font-semibold text-gray-700 max-w-xs mx-auto">of leaders report their tech investments haven't delivered full value.</p>
+                             <a href="https://www.pwc.in/assets/pdfs/consulting/operations/functional-effectiveness/operations-transformation/delivering-on-the-promise-of-supply-chain-transformation.pdf" target="_blank" class="source-link">Source: PwC [4]</a>
+                        </div>
+                        <div class="mt-auto pt-6 border-t border-gray-200">
+                            <p class="text-lg font-semibold text-center text-[#05668d] mb-4 font-space-grotesk">Primary Barriers to ROI</p>
+                            <div class="chart-container h-56 md:h-64">
+                                <canvas id="automationBarriersChart"></canvas>
+                            </div>
+                             <a href="https://www2.deloitte.com/in/en/pages/finance/articles/cfo-insights-cfos-speak-on-gen-ai-and-more.html" target="_blank" class="source-link text-center block mt-2">Source: Deloitte [9]</a>
+                        </div>
+                    </div>
+
+                    <div class="card p-6 flex flex-col">
+                        <h3 class="text-2xl font-bold text-[#004d40] mb-4 font-space-grotesk">3. The AI-First Enterprise</h3>
+                        <p class="text-gray-600 mb-6 flex-grow">AI, especially Generative AI, has shifted from experiment to a core strategic priority for the vast majority of organizations.</p>
+                        <div class="chart-container h-64 md:h-72">
+                            <canvas id="aiPriorityChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm text-gray-500 mt-4">GenAI as a Key Priority <a href="https://nasscom.in/knowledge-center/publications/technology-sector-india-2024-resilience-reinvention-and-reimagination" target="_blank" class="source-link">[1]</a></p>
+                        <div class="mt-6 pt-6 border-t border-gray-200 text-center">
+                            <p class="text-lg font-semibold text-[#05668d] font-space-grotesk">The "10-20-70" Success Principle</p>
+                            <p class="text-sm text-gray-500 mb-4">Resource allocation in successful AI adoption <a href="https://www.bcg.com/publications/2023/what-it-takes-to-win-with-ai" target="_blank" class="source-link">[21]</a></p>
+                            <div class="flex justify-around items-end mt-4 text-white font-bold">
+                                <div class="w-1/4 bg-[#58a4b0] rounded-t-lg p-2" style="height: 40px;">10%</div>
+                                <div class="w-1/4 bg-[#ff6b6b] rounded-t-lg p-2" style="height: 80px;">20%</div>
+                                <div class="w-1/4 bg-[#05668d] rounded-t-lg p-2" style="height: 160px;">70%</div>
+                            </div>
+                             <div class="flex justify-around items-start text-xs text-gray-600 mt-2">
+                                <p class="w-1/4">Algorithms</p>
+                                <p class="w-1/4">Technology</p>
+                                <p class="w-1/4">People & Process</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>            
+            <section id="insight1" class="mb-16 md:mb-24 bg-blue-50 border-l-4 border-[#58a4b0] p-8 rounded-r-lg">
+                <h3 class="text-2xl font-bold text-[#05668d] mb-4 font-space-grotesk">Insight: The Value Realization Gap</h3>
+                <p class="text-gray-700">The data reveals a critical disconnect: while investment in technology is high, the returns often fall short of expectations. The "92% problem" isn't about faulty technology; it's a failure of strategy and integration. Enterprises are buying tools but aren't fundamentally rewiring the organizational processes to leverage them. Success isn't just about adoption, but about deep, systemic absorption of new capabilities into the company's operational DNA.</p>
+            </section>
+
+            <section id="journey" class="mb-16 md:mb-24">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-[#05668d] mb-12 font-space-grotesk">The Multi-Year Transformation Journey</h2>
+                <div class="relative w-full max-w-5xl mx-auto">
+                    <div class="absolute left-1/2 w-1 bg-[#58a4b0] h-full -translate-x-1/2"></div>
+                    <div class="space-y-16">
+                        <div class="relative flex items-center">
+                            <div class="w-1/2 pr-8 text-right">
+                                <div class="card p-6">
+                                    <h4 class="text-xl font-bold text-[#58a4b0] font-space-grotesk">Phase 1: Foundational Modernization</h4>
+                                    <p class="text-sm text-gray-500 mb-2">(Years 1-2)</p>
+                                    <p class="text-gray-600">Focus on tackling technical debt by migrating key workloads to the cloud and establishing robust data governance. This phase consumes significant resources but is non-negotiable for future agility. <a href="https://nasscom.in/knowledge-center/publications/enterprise-tech-spending-sentiments-q3-2023" target="_blank" class="source-link">[6]</a></p>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 w-6 h-6 bg-white border-4 border-[#58a4b0] rounded-full -translate-x-1/2"></div>
+                            <div class="w-1/2 pl-8"></div>
+                        </div>
+                        <div class="relative flex items-center">
+                            <div class="w-1/2 pr-8"></div>
+                            <div class="absolute left-1/2 w-6 h-6 bg-white border-4 border-[#ff6b6b] rounded-full -translate-x-1/2"></div>
+                            <div class="w-1/2 pl-8">
+                                <div class="card p-6">
+                                    <h4 class="text-xl font-bold text-[#ff6b6b] font-space-grotesk">Phase 2: Process Optimization</h4>
+                                    <p class="text-sm text-gray-500 mb-2">(Years 2-3)</p>
+                                    <p class="text-gray-600">Automation and AI integration begin to show measurable returns. Organizations start to see efficiency gains and cost reductions, but the full potential is still untapped. <a href="https://www2.deloitte.com/in/en/pages/technology/articles/tech-trends-2024.html" target="_blank" class="source-link">[12]</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative flex items-center">
+                            <div class="w-1/2 pr-8 text-right">
+                                <div class="card p-6">
+                                    <h4 class="text-xl font-bold text-[#004d40] font-space-grotesk">Phase 3: Innovation Acceleration</h4>
+                                    <p class="text-sm text-gray-500 mb-2">(Years 3-5)</p>
+                                    <p class="text-gray-600">The transformation reaches maturity with AI-driven innovation becoming a core competitive advantage. Organizations begin to see exponential returns on their technology investments. <a href="https://www.bcg.com/publications/2023/digital-transformation-india" target="_blank" class="source-link">[18]</a></p>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 w-6 h-6 bg-white border-4 border-[#004d40] rounded-full -translate-x-1/2"></div>
+                            <div class="w-1/2 pl-8"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="conclusion" class="mb-16 md:mb-24">
+                <div class="bg-gradient-to-r from-[#05668d] to-[#58a4b0] text-white p-8 md:p-12 rounded-2xl">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 font-space-grotesk">The Path Forward</h2>
+                    <p class="text-lg md:text-xl mb-6">India's digital transformation journey is not just about technology adoption—it's about building resilient, future-ready enterprises that can thrive in an increasingly complex and competitive global landscape.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-2">$500B</div>
+                            <div class="text-sm opacity-90">Potential GDP Impact by 2026</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-2">92%</div>
+                            <div class="text-sm opacity-90">Leaders Seeking Better ROI</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-2">5 Years</div>
+                            <div class="text-sm opacity-90">Typical Transformation Timeline</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Cloud Adoption Chart
+        const cloudCtx = document.getElementById('cloudAdoptionChart').getContext('2d');
+        new Chart(cloudCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Fully Adopted', 'Partially Adopted', 'Planning', 'Not Started'],
+                datasets: [{
+                    data: [35, 45, 15, 5],
+                    backgroundColor: ['#58a4b0', '#ff6b6b', '#05668d', '#e5e7eb'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true
+                        }
+                    }
+                }
+            }
+        });
+
+        // GDP Impact Chart
+        const gdpCtx = document.getElementById('gdpImpactChart').getContext('2d');
+        new Chart(gdpCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2023', '2024', '2025', '2026'],
+                datasets: [{
+                    label: 'GDP Impact ($B)',
+                    data: [200, 300, 400, 500],
+                    backgroundColor: '#58a4b0',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Automation Barriers Chart
+        const barriersCtx = document.getElementById('automationBarriersChart').getContext('2d');
+        new Chart(barriersCtx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['Change Management', 'Skill Gaps', 'Data Quality', 'Integration', 'ROI Uncertainty'],
+                datasets: [{
+                    label: 'Percentage',
+                    data: [65, 58, 52, 45, 38],
+                    backgroundColor: '#ff6b6b',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // AI Priority Chart
+        const aiCtx = document.getElementById('aiPriorityChart').getContext('2d');
+        new Chart(aiCtx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'AI as Strategic Priority (%)',
+                    data: [25, 35, 55, 75, 85],
+                    borderColor: '#004d40',
+                    backgroundColor: 'rgba(0, 77, 64, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

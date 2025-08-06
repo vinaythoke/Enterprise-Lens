@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI ROI Imperative - Enterprise Lens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Space+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #006A4E;
+            --secondary-blue: #AEC6CF;
+            --accent-red: #F08080;
+            --text-dark: #212529;
+            --text-light: #6c757d;
+            --bg-light: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        .font-space-grotesk {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .font-space-mono {
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .logo-text {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .theme-text-green { color: var(--primary-green); }
+        .theme-text-blue { color: var(--secondary-blue); }
+        .theme-text-red { color: var(--accent-red); }
+        .theme-bg-green { background-color: var(--primary-green); }
+        .theme-bg-blue { background-color: var(--secondary-blue); }
+        .theme-bg-red { background-color: var(--accent-red); }
+        .theme-bg-light { background-color: var(--bg-light); }
+        
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .kpi-label {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            max-height: 400px;
+        }
+        
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        
+        .source-link {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        
+        .source-link:hover {
+            color: var(--primary-green);
+        }
+        
+        .insight-card {
+            background-color: #e9f5f2;
+            border-left: 4px solid var(--primary-green);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            background: white;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-button:hover {
+            background: var(--primary-green);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 2rem;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body class="theme-bg-light">
+
+    <!-- Back Button -->
+    <a href="index.html" class="back-button">
+        ← Back to Reports
+    </a>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <!-- Header with Logo -->
+        <header class="mb-12 text-center pt-8">
+            <div class="mb-8">
+                <h1 class="text-4xl md:text-6xl font-bold logo-text mb-2 font-space-grotesk">
+                    Enterprise Lens
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 font-medium">
+                    Research at Sarvarth
+                </p>
+            </div>
+            
+            <h2 class="font-space-grotesk text-4xl md:text-5xl font-bold theme-text-green mb-4">The AI ROI Imperative</h2>
+            <p class="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto">This interactive report explores how companies get real value from their Artificial Intelligence investments. We'll look at the actual costs, benefits, and risks of key AI technologies, and provide a clear framework for making smart decisions to maximize returns.</p>
+        </header>
+
+        <section id="hero-stats" class="mb-16">
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div class="card p-6">
+                    <p class="font-space-grotesk text-5xl font-bold theme-text-red">$3.70</p>
+                    <p class="mt-2 font-semibold text-gray-800">Average ROI per $1 invested in GenAI</p>
+                    <a href="https://www.idc.com/getdoc.jsp?containerId=US51258623" target="_blank" class="source-link">Source: IDC</a>
+                </div>
+                <div class="card p-6">
+                    <p class="font-space-grotesk text-5xl font-bold theme-text-red">8%</p>
+                    <p class="mt-2 font-semibold text-gray-800">Of enterprises are "Front-runners" successfully scaling AI</p>
+                    <a href="https://www.accenture.com/us-en/insights/artificial-intelligence/ai-navigator-for-enterprise" target="_blank" class="source-link">Source: Accenture</a>
+                </div>
+                <div class="card p-6">
+                    <p class="font-space-grotesk text-5xl font-bold theme-text-red">+7%</p>
+                    <p class="mt-2 font-semibold text-gray-800">Higher revenue growth for Front-runners vs. peers</p>
+                    <a href="https://www.accenture.com/us-en/insights/c-suite/generative-ai-growth" target="_blank" class="source-link">Source: Accenture</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="maturity-chasm" class="mb-16 card p-6 md:p-8">
+            <h2 class="font-space-grotesk text-3xl font-bold mb-2">The AI Maturity Chasm</h2>
+            <p class="text-gray-700 max-w-4xl mb-6">The corporate world is fragmenting. A small group of "Front-runners" are achieving massive performance gains, leaving the majority of "Experimenters" behind. This gap is widening as leaders build a compounding advantage.</p>
+            <div class="chart-container">
+                <canvas id="maturityChasmChart"></canvas>
+            </div>
+            <p class="text-left text-sm text-gray-500 mt-4">This chart illustrates the performance advantage enjoyed by companies at higher AI maturity levels. <a href="https://www.accenture.com/us-en/insights/artificial-intelligence/ai-navigator-for-enterprise" target="_blank" class="source-link">Source: Accenture</a></p>
+            <div class="insight-card">
+                 <h3 class="font-space-grotesk text-xl font-bold theme-text-green mb-2">Insight: The Compounding Advantage</h3>
+                 <p class="text-gray-800">The ability to scale even one strategic AI initiative is a powerful ROI multiplier. It builds reusable enterprise assets—data pipelines, governance frameworks, and talent—that de-risk and accelerate all future AI projects. This creates a virtuous cycle where success breeds more success, widening the gap between leaders and laggards.</p>
+            </div>
+        </section>
+        <section id="technology-deep-dive" class="mb-16">
+            <h2 class="font-space-grotesk text-3xl font-bold text-left mb-8">An AI Investment Portfolio View</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
+
+                <div class="card p-6 flex flex-col">
+                    <h3 class="font-space-grotesk text-2xl font-bold text-gray-800 mb-4">Robotic Process Automation (RPA)</h3>
+                    <p class="text-gray-700 mb-4 flex-grow">The mature workhorse for efficiency. RPA delivers predictable, short-term returns by automating repetitive tasks, providing quick wins that can fund more strategic AI bets.</p>
+                    <div class="mb-4">
+                        <p class="text-sm font-semibold text-gray-500">Gartner Hype Cycle: <span class="font-bold theme-text-green">Slope of Enlightenment</span></p>
+                    </div>
+                    <div class="kpi-card">
+                        <p class="kpi-value theme-text-green">11-13 Months</p>
+                        <p class="kpi-label">Typical Payback Period <a href="https://www.uipath.com/rpa/roi-calculator" target="_blank" class="source-link">(Source: UiPath)</a></p>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col">
+                    <h3 class="font-space-grotesk text-2xl font-bold text-gray-800 mb-4">AI-Enhanced ERP</h3>
+                    <p class="text-gray-700 mb-4 flex-grow">Transforming the digital core. AI is turning rigid ERPs into proactive engines of insight, dramatically reducing implementation costs and boosting operational efficiency.</p>
+                     <div class="mb-4">
+                        <p class="text-sm font-semibold text-gray-500">Gartner Hype Cycle: <span class="font-bold theme-text-red">Innovation Trigger</span></p>
+                    </div>
+                    <div class="kpi-card">
+                        <p class="kpi-value theme-text-red">20-40%</p>
+                        <p class="kpi-label">Reduction in Implementation Effort <a href="https://www.bcg.com/publications/2023/how-generative-ai-can-transform-erp" target="_blank" class="source-link">(Source: BCG)</a></p>
+                    </div>
+                </div>
+
+                <div class="card p-6 flex flex-col">
+                    <h3 class="font-space-grotesk text-2xl font-bold text-gray-800 mb-4">Generative AI & LLMs</h3>
+                    <p class="text-gray-700 mb-4 flex-grow">The high-risk, high-reward frontier. GenAI promises transformative returns but is navigating peak hype, demanding significant investment in talent, data, and governance.</p>
+                    <div class="mb-4">
+                        <p class="text-sm font-semibold text-gray-500">Gartner Hype Cycle: <span class="font-bold theme-text-red">Peak of Inflated Expectations</span></p>
+                    </div>
+                    <div class="kpi-card">
+                        <p class="kpi-value theme-text-red">$3.70</p>
+                        <p class="kpi-label">Average ROI per $1 invested <a href="https://www.idc.com/getdoc.jsp?containerId=US51258623" target="_blank" class="source-link">(Source: IDC)</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roi-framework" class="mb-16">
+            <h2 class="font-space-grotesk text-3xl font-bold text-left mb-8">The ROI Decision Framework</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card p-6">
+                    <h3 class="font-space-grotesk text-xl font-bold text-gray-800 mb-4">Quick Wins (0-6 months)</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                            <span class="font-medium">RPA Implementation</span>
+                            <span class="text-green-600 font-bold">$50K-$200K</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                            <span class="font-medium">Process Optimization</span>
+                            <span class="text-green-600 font-bold">$100K-$500K</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                            <span class="font-medium">Data Quality Improvement</span>
+                            <span class="text-green-600 font-bold">$75K-$300K</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card p-6">
+                    <h3 class="font-space-grotesk text-xl font-bold text-gray-800 mb-4">Strategic Investments (6-18 months)</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                            <span class="font-medium">AI-Enhanced ERP</span>
+                            <span class="text-blue-600 font-bold">$500K-$2M</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                            <span class="font-medium">Predictive Analytics</span>
+                            <span class="text-blue-600 font-bold">$300K-$1M</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                            <span class="font-medium">Customer AI</span>
+                            <span class="text-blue-600 font-bold">$400K-$1.5M</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="risk-mitigation" class="mb-16">
+            <h2 class="font-space-grotesk text-3xl font-bold text-left mb-8">Risk Mitigation Strategies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card p-6 text-center">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="font-space-grotesk text-xl font-bold text-gray-800 mb-3">Start Small, Scale Smart</h3>
+                    <p class="text-gray-600">Begin with pilot projects that have clear success metrics. Use quick wins to build momentum and fund larger initiatives.</p>
+                </div>
+                
+                <div class="card p-6 text-center">
+                    <div class="text-4xl mb-4">👥</div>
+                    <h3 class="font-space-grotesk text-xl font-bold text-gray-800 mb-3">Invest in People</h3>
+                    <p class="text-gray-600">AI success depends on human expertise. Prioritize training and change management alongside technology investment.</p>
+                </div>
+                
+                <div class="card p-6 text-center">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="font-space-grotesk text-xl font-bold text-gray-800 mb-3">Measure Everything</h3>
+                    <p class="text-gray-600">Establish clear KPIs and ROI metrics from day one. Regular measurement enables course correction and optimization.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="mb-16">
+            <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 md:p-12 rounded-2xl">
+                <h2 class="font-space-grotesk text-3xl md:text-4xl font-bold mb-6">The ROI Imperative</h2>
+                <p class="text-lg md:text-xl mb-6">AI investment is not optional—it's imperative for competitive survival. The key is not whether to invest, but how to invest wisely with clear ROI expectations and risk mitigation strategies.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">$3.70</div>
+                        <div class="text-sm opacity-90">Average GenAI ROI</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">8%</div>
+                        <div class="text-sm opacity-90">Front-runner Companies</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">+7%</div>
+                        <div class="text-sm opacity-90">Revenue Growth Advantage</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Maturity Chasm Chart
+        const maturityCtx = document.getElementById('maturityChasmChart').getContext('2d');
+        new Chart(maturityCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Experimenters', 'Builders', 'Scalers', 'Front-runners'],
+                datasets: [{
+                    label: 'Performance Score',
+                    data: [45, 65, 85, 95],
+                    backgroundColor: ['#F08080', '#AEC6CF', '#006A4E', '#006A4E'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Human Algorithm - Leading with Empathy in the AI Era - Enterprise Lens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Space+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003459;
+            --secondary-blue: #007EA7;
+            --accent-red: #F08080;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        .font-space-grotesk {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .font-space-mono {
+            font-family: 'Space Mono', monospace;
+        }
+        
+        .logo-text {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-title {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        
+        .section-subtitle {
+            color: var(--secondary-blue);
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--accent-red);
+        }
+        
+        .source-link {
+            margin-top: auto;
+            padding-top: 1rem;
+            text-align: right;
+        }
+        
+        .insight-block {
+            background-color: #eef7ff;
+            border-left: 4px solid var(--secondary-blue);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 0.5rem;
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            background: white;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-button:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 2rem;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Back Button -->
+    <a href="index.html" class="back-button">
+        ← Back to Reports
+    </a>
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <!-- Header with Logo -->
+        <header class="mb-16 md:mb-24 pt-8">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl md:text-6xl font-bold logo-text mb-2 font-space-grotesk">
+                    Enterprise Lens
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 font-medium">
+                    Research at Sarvarth
+                </p>
+            </div>
+            
+            <h2 class="font-space-grotesk text-5xl md:text-7xl font-bold text-[#003459] mb-4 max-w-4xl">The Human Algorithm</h2>
+            <p class="text-xl md:text-2xl text-[#007EA7] max-w-3xl mb-6">A modern playbook for leading with empathy in the AI era.</p>
+            <p class="text-lg text-gray-700 max-w-3xl">This report synthesizes data from McKinsey, Gartner, and Harvard Business Review to address the central leadership challenge of the next decade: balancing the drive for AI-powered efficiency with the critical need for human-centric leadership. It provides actionable frameworks for executives to build trust, cultivate essential skills, and architect an organization that is both technologically advanced and profoundly human.</p>
+        </header>
+
+        <section id="paradox" class="mb-16 md:mb-24">
+            <div class="max-w-3xl mb-12">
+                <h2 class="font-space-grotesk section-title mb-4">The Automation Paradox</h2>
+                <p class="text-lg text-gray-600">As technology automates routine tasks, the competitive advantage shifts to uniquely human skills. The more advanced the workplace becomes, the more profoundly human its leaders must be.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <div class="card">
+                    <div>
+                        <h3 class="font-space-grotesk section-subtitle mb-2">The Soaring Demand for Soft Skills</h3>
+                        <p class="text-gray-600 mb-4">McKinsey projects that by 2030, the need for social and emotional skills will surge as automation redefines work.</p>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="demandChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="source-link">
+                        <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-of-the-future" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: McKinsey &rarr;</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3 class="font-space-grotesk section-subtitle mb-2">The Measurable ROI of Empathy</h3>
+                        <p class="text-gray-600 mb-4">Gartner finds that high-empathy leadership directly boosts key business outcomes, creating a clear competitive edge.</p>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="roiChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="source-link">
+                        <a href="https://www.gartner.com/en/human-resources/trends/hr-trends" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: Gartner &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="insight-block">
+                <h4 class="font-space-grotesk text-xl font-bold text-[#003459] mb-2">Key Insight: The Humanity Premium</h4>
+                <p class="text-gray-700">The data is unequivocal: as AI handles routine work, "soft skills" like empathy, communication, and emotional intelligence become the new hard skills. They are no longer peripheral but are central drivers of retention, innovation, and customer satisfaction, creating a measurable competitive advantage.</p>
+            </div>
+        </section>
+        <section id="disconnect" class="mb-16 md:mb-24">
+            <div class="max-w-3xl mb-12">
+                <h2 class="font-space-grotesk section-title mb-4">Diagnosing the Disconnect</h2>
+                <p class="text-lg text-gray-600">A significant gap exists between the C-suite's push for AI and the organization's readiness, creating a leadership and trust deficit.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <div class="card">
+                    <div>
+                        <h3 class="font-space-grotesk section-subtitle mb-2">The C-Suite Confidence Gap</h3>
+                        <p class="text-gray-600 mb-4">While CEOs see AI as the future, many doubt their own leadership teams have the skills to lead the charge, per Gartner data.</p>
+                        <div class="chart-container">
+                            <canvas id="confidenceGapChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="source-link">
+                        <a href="https://www.gartner.com/en/human-resources/trends/future-of-work-trends" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: Gartner &rarr;</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3 class="font-space-grotesk section-subtitle mb-2">Human vs. Machine Support</h3>
+                        <p class="text-gray-600 mb-4">A startling HBR finding reveals a growing empathy deficit in management, where AI is perceived as more supportive.</p>
+                        <div class="chart-container">
+                            <canvas id="supportGapChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="source-link">
+                        <a href="https://hbr.org/2023/03/the-empathy-deficit" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: Harvard Business Review &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="leadership-framework" class="mb-16 md:mb-24">
+            <div class="max-w-3xl mb-12">
+                <h2 class="font-space-grotesk section-title mb-4">The Empathetic Leadership Framework</h2>
+                <p class="text-lg text-gray-600">A systematic approach to building human-centric leadership capabilities that complement AI-driven efficiency.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card text-center">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="font-space-grotesk text-xl font-bold text-gray-800 mb-3">Trust Building</h3>
+                    <p class="text-gray-600">Establish psychological safety through transparent communication, consistent actions, and vulnerability. Trust is the foundation of effective human-AI collaboration.</p>
+                    <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                        <p class="text-sm font-semibold text-blue-800">Key Metric: Employee Trust Index</p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <h3 class="font-space-grotesk text-xl font-bold text-gray-800 mb-3">Emotional Intelligence</h3>
+                    <p class="text-gray-600">Develop self-awareness, empathy, and relationship management skills. EQ becomes the competitive differentiator in AI-enhanced workplaces.</p>
+                    <div class="mt-4 p-3 bg-green-50 rounded-lg">
+                        <p class="text-sm font-semibold text-green-800">Key Metric: Leadership EQ Score</p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <h3 class="font-space-grotesk text-xl font-bold text-gray-800 mb-3">Adaptive Learning</h3>
+                    <p class="text-gray-600">Foster continuous learning and resilience. Leaders must model adaptability as AI transforms work patterns and skill requirements.</p>
+                    <div class="mt-4 p-3 bg-purple-50 rounded-lg">
+                        <p class="text-sm font-semibold text-purple-800">Key Metric: Learning Velocity</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="implementation" class="mb-16 md:mb-24">
+            <div class="max-w-3xl mb-12">
+                <h2 class="font-space-grotesk section-title mb-4">Implementation Roadmap</h2>
+                <p class="text-lg text-gray-600">A practical 12-month journey to transform leadership capabilities and organizational culture.</p>
+            </div>
+            <div class="relative w-full max-w-5xl mx-auto">
+                <div class="absolute left-1/2 w-1 bg-[#007EA7] h-full -translate-x-1/2"></div>
+                <div class="space-y-16">
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="card">
+                                <h4 class="text-xl font-bold text-[#007EA7] font-space-grotesk">Months 1-3: Foundation</h4>
+                                <p class="text-sm text-gray-500 mb-2">Assessment & Awareness</p>
+                                <p class="text-gray-600">Conduct leadership assessments, establish baseline metrics, and create awareness programs around the importance of human-centric leadership in the AI era.</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 w-6 h-6 bg-white border-4 border-[#007EA7] rounded-full -translate-x-1/2"></div>
+                        <div class="w-1/2 pl-8"></div>
+                    </div>
+                    
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8"></div>
+                        <div class="absolute left-1/2 w-6 h-6 bg-white border-4 border-[#F08080] rounded-full -translate-x-1/2"></div>
+                        <div class="w-1/2 pl-8">
+                            <div class="card">
+                                <h4 class="text-xl font-bold text-[#F08080] font-space-grotesk">Months 4-6: Skill Building</h4>
+                                <p class="text-sm text-gray-500 mb-2">Training & Development</p>
+                                <p class="text-gray-600">Implement targeted training programs for emotional intelligence, communication skills, and change management. Focus on practical application.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="card">
+                                <h4 class="text-xl font-bold text-[#003459] font-space-grotesk">Months 7-9: Integration</h4>
+                                <p class="text-sm text-gray-500 mb-2">Practice & Feedback</p>
+                                <p class="text-gray-600">Embed new leadership practices into daily operations. Establish feedback loops and coaching programs to reinforce learning.</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 w-6 h-6 bg-white border-4 border-[#003459] rounded-full -translate-x-1/2"></div>
+                        <div class="w-1/2 pl-8"></div>
+                    </div>
+                    
+                    <div class="relative flex items-center">
+                        <div class="w-1/2 pr-8"></div>
+                        <div class="absolute left-1/2 w-6 h-6 bg-white border-4 border-[#007EA7] rounded-full -translate-x-1/2"></div>
+                        <div class="w-1/2 pl-8">
+                            <div class="card">
+                                <h4 class="text-xl font-bold text-[#007EA7] font-space-grotesk">Months 10-12: Optimization</h4>
+                                <p class="text-sm text-gray-500 mb-2">Scale & Refine</p>
+                                <p class="text-gray-600">Scale successful practices across the organization. Measure impact and refine approaches based on outcomes and feedback.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="mb-16 md:mb-24">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 md:p-12 rounded-2xl">
+                <h2 class="font-space-grotesk text-3xl md:text-4xl font-bold mb-6">The Human Algorithm</h2>
+                <p class="text-lg md:text-xl mb-6">The future belongs to leaders who can harmonize human empathy with AI efficiency. Success requires not just technological adoption, but a fundamental reimagining of what it means to lead in the digital age.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">+40%</div>
+                        <div class="text-sm opacity-90">Employee Retention</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">+25%</div>
+                        <div class="text-sm opacity-90">Innovation Output</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-2">+35%</div>
+                        <div class="text-sm opacity-90">Customer Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Demand for Soft Skills Chart
+        const demandCtx = document.getElementById('demandChart').getContext('2d');
+        new Chart(demandCtx, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2025', '2030'],
+                datasets: [{
+                    label: 'Social & Emotional Skills',
+                    data: [30, 45, 65],
+                    borderColor: '#007EA7',
+                    backgroundColor: 'rgba(0, 126, 167, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // ROI of Empathy Chart
+        const roiCtx = document.getElementById('roiChart').getContext('2d');
+        new Chart(roiCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Retention', 'Innovation', 'Satisfaction', 'Productivity'],
+                datasets: [{
+                    label: 'Improvement %',
+                    data: [40, 25, 35, 30],
+                    backgroundColor: '#F08080',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 50,
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Confidence Gap Chart
+        const confidenceCtx = document.getElementById('confidenceGapChart').getContext('2d');
+        new Chart(confidenceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Confident', 'Somewhat Confident', 'Not Confident'],
+                datasets: [{
+                    data: [15, 45, 40],
+                    backgroundColor: ['#007EA7', '#F08080', '#003459'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            usePointStyle: true
+                        }
+                    }
+                }
+            }
+        });
+
+        // Support Gap Chart
+        const supportCtx = document.getElementById('supportGapChart').getContext('2d');
+        new Chart(supportCtx, {
+            type: 'bar',
+            data: {
+                labels: ['AI Support', 'Human Support'],
+                datasets: [{
+                    label: 'Perceived Support Level',
+                    data: [65, 45],
+                    backgroundColor: ['#007EA7', '#F08080'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
