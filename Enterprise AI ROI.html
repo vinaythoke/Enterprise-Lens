@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The AI ROI Imperative - Enterprise Lens</title>
+    <title>The AI ROI Imperative: An Interactive Infographic</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Space+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-green: #006A4E;
@@ -21,8 +21,12 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: #F8F9FA;
+            color: #212529;
+        }
+        
+        .font-title {
+            font-family: 'Space Grotesk', sans-serif;
         }
         
         .font-space-grotesk {
@@ -34,7 +38,7 @@
         }
         
         .logo-text {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-blue) 100%);
+            background: linear-gradient(135deg, #006A4E 0%, #AEC6CF 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -121,8 +125,8 @@
             left: 2rem;
             z-index: 1000;
             background: white;
-            border: 2px solid var(--primary-green);
-            color: var(--primary-green);
+            border: 2px solid #006A4E;
+            color: #006A4E;
             padding: 0.75rem 1.5rem;
             border-radius: 2rem;
             text-decoration: none;
@@ -132,7 +136,7 @@
         }
         
         .back-button:hover {
-            background: var(--primary-green);
+            background: #006A4E;
             color: white;
             transform: translateY(-2px);
         }
@@ -160,7 +164,7 @@
         <!-- Header with Logo -->
         <header class="mb-12 text-center pt-8">
             <div class="mb-8">
-                <h1 class="text-4xl md:text-6xl font-bold logo-text mb-2 font-space-grotesk">
+                <h1 class="text-4xl md:text-6xl font-bold logo-text mb-2 font-title">
                     Enterprise Lens
                 </h1>
                 <p class="text-lg md:text-xl text-gray-600 font-medium">

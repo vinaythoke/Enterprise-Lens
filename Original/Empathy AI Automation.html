@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: The Human Algorithm - Leading with Empathy in the AI Era</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@700&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .font-space-grotesk {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .font-space-mono {
+            font-family: 'Space Mono', monospace;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .section-title {
+            color: #003459;
+            font-weight: 700;
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        .section-subtitle {
+            color: #007EA7;
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #F08080;
+        }
+        .source-link {
+            margin-top: auto;
+            padding-top: 1rem;
+            text-align: right;
+        }
+        .insight-block {
+            background-color: #eef7ff;
+            border-left: 4px solid #007EA7;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="mb-16 md:mb-24">
+            <h1 class="font-space-grotesk text-5xl md:text-7xl font-bold text-[#003459] mb-4 max-w-4xl">The Human Algorithm</h1>
+            <p class="text-xl md:text-2xl text-[#007EA7] max-w-3xl mb-6">A modern playbook for leading with empathy in the AI era.</p>
+            <p class="text-lg text-gray-700 max-w-3xl">This report synthesizes data from McKinsey, Gartner, and Harvard Business Review to address the central leadership challenge of the next decade: balancing the drive for AI-powered efficiency with the critical need for human-centric leadership. It provides actionable frameworks for executives to build trust, cultivate essential skills, and architect an organization that is both technologically advanced and profoundly human.</p>
+        </header>
+
+        <section id="paradox" class="mb-16 md:mb-24">
+            <div class="max-w-3xl mb-12">
+                <h2 class="font-space-grotesk section-title mb-4">The Automation Paradox</h2>
+                <p class="text-lg text-gray-600">As technology automates routine tasks, the competitive advantage shifts to uniquely human skills. The more advanced the workplace becomes, the more profoundly human its leaders must be.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <div class="card">
+                    <div>
+                        <h3 class="font-space-grotesk section-subtitle mb-2">The Soaring Demand for Soft Skills</h3>
+                        <p class="text-gray-600 mb-4">McKinsey projects that by 2030, the need for social and emotional skills will surge as automation redefines work.</p>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="demandChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="source-link">
+                        <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-of-the-future" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: McKinsey &rarr;</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3 class="font-space-grotesk section-subtitle mb-2">The Measurable ROI of Empathy</h3>
+                        <p class="text-gray-600 mb-4">Gartner finds that high-empathy leadership directly boosts key business outcomes, creating a clear competitive edge.</p>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="roiChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="source-link">
+                        <a href="https://www.gartner.com/en/human-resources/trends/hr-trends" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: Gartner &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="insight-block">
+                <h4 class="font-space-grotesk text-xl font-bold text-[#003459] mb-2">Key Insight: The Humanity Premium</h4>
+                <p class="text-gray-700">The data is unequivocal: as AI handles routine work, "soft skills" like empathy, communication, and emotional intelligence become the new hard skills. They are no longer peripheral but are central drivers of retention, innovation, and customer satisfaction, creating a measurable competitive advantage.</p>
+            </div>
+        </section>
+
+        <section id="disconnect" class="mb-16 md:mb-24">
+            <div class="max-w-3xl mb-12">
+                <h2 class="font-space-grotesk section-title mb-4">Diagnosing the Disconnect</h2>
+                <p class="text-lg text-gray-600">A significant gap exists between the C-suite's push for AI and the organization's readiness, creating a leadership and trust deficit.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <div class="card">
+                    <div>
+                        <h3 class="font-space-grotesk section-subtitle mb-2">The C-Suite Confidence Gap</h3>
+                        <p class="text-gray-600 mb-4">While CEOs see AI as the future, many doubt their own leadership teams have the skills to lead the charge, per Gartner data.</p>
+                        <div class="chart-container">
+                            <canvas id="confidenceGapChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="source-link">
+                        <a href="https://www.gartner.com/en/human-resources/trends/future-of-work-trends" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: Gartner &rarr;</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3 class="font-space-grotesk section-subtitle mb-2">Human vs. Machine Support</h3>
+                        <p class="text-gray-600 mb-4">A startling HBR finding reveals a growing empathy deficit in management, where AI is perceived as more supportive.</p>
+                        <div class="chart-container">
+                            <canvas id="supportGapChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="source-link">
+                        <a href="https://hbr.org/2023/04/ai-is-making-work-more-human" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: Harvard Business Review &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="insight-block">
+                <h4 class="font-space-grotesk text-xl font-bold text-[#003459] mb-2">Actionable: Bridge the Leadership Gap</h4>
+                <p class="text-gray-700">The data reveals a critical trust and capability gap. Employees feel more supported by AI than their bosses, and CEOs doubt their teams can lead the AI transition. The immediate action is a dual investment: upskill leaders in both AI literacy and core human-centric skills like coaching and active listening.</p>
+            </div>
+        </section>
+
+        <section id="leadership-models" class="mb-16 md:mb-24">
+            <div class="max-w-3xl mb-12">
+                <h2 class="font-space-grotesk section-title mb-4">Architecting Future-Ready Leadership</h2>
+                <p class="text-lg text-gray-600">The AI era renders traditional command-and-control obsolete. Leadership must evolve from a fixed role to a developmental journey, mastering new, human-centric models.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-stretch justify-center gap-4 md:gap-0">
+                <div class="card md:w-1/3 z-10 text-center">
+                    <h3 class="font-space-grotesk text-xl font-bold text-[#00A8E8] mb-2">1. The Human-Centric Leader</h3>
+                    <p class="font-space-mono text-sm text-gray-500 mb-4">(McKinsey)</p>
+                    <p class="text-gray-700">Starts with inner work: building self-awareness and a values-based compass to lead from a stable human core.</p>
+                </div>
+                <div class="hidden md:block flow-arrow mx-4 self-center">➔</div>
+                <div class="md:hidden flow-arrow my-2 self-center">⬇</div>
+                <div class="card md:w-1/3 z-10 text-center">
+                    <h3 class="font-space-grotesk text-xl font-bold text-[#00A8E8] mb-2">2. The AI-First Leader</h3>
+                    <p class="font-space-mono text-sm text-gray-500 mb-4">(HBR)</p>
+                    <p class="text-gray-700">Architects the organizational journey, building AI literacy and fostering a culture of safe experimentation.</p>
+                </div>
+                 <div class="hidden md:block flow-arrow mx-4 self-center">➔</div>
+                 <div class="md:hidden flow-arrow my-2 self-center">⬇</div>
+                <div class="card md:w-1/3 z-10 text-center">
+                    <h3 class="font-space-grotesk text-xl font-bold text-[#00A8E8] mb-2">3. The AI-Augmented Leader</h3>
+                     <p class="font-space-mono text-sm text-gray-500 mb-4">(HBR)</p>
+                    <p class="text-gray-700">Masters the synthesis, combining machine intelligence with human wisdom and compassion for superior decisions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="trust" class="mb-16 md:mb-24">
+             <div class="max-w-3xl mb-12">
+                <h2 class="font-space-grotesk section-title mb-4">The Trust Equation</h2>
+                <p class="text-lg text-gray-600">Employee trust in AI is not monolithic; it's a paradox. They trust AI's impartiality for routine feedback but fear its lack of context in high-stakes decisions. Ultimately, trust in AI is a proxy for trust in leadership.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <div class="card lg:col-span-2">
+                    <div>
+                        <h3 class="font-space-grotesk section-subtitle mb-2">The Duality of Trust in AI</h3>
+                        <p class="text-gray-600 mb-4">Gartner data reveals employees trust AI for fairness in some areas but reject it in others, highlighting the need for nuanced policy.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="chart-container h-64 md:h-80">
+                                <canvas id="feedbackTrustChart"></canvas>
+                            </div>
+                            <div class="chart-container h-64 md:h-80">
+                                <canvas id="hiringTrustChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="source-link">
+                        <a href="https://www.gartner.com/en/articles/do-your-employees-trust-ai" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: Gartner &rarr;</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3 class="font-space-grotesk section-subtitle mb-2">Employee Trust Barometer</h3>
+                        <p class="text-gray-600 mb-4">Employees trust their own employer far more than other institutions to deploy AI ethically (McKinsey), creating a critical foundation to build upon.</p>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="trustBarometerChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="source-link">
+                        <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-in-2023-generative-ais-breakout-year" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: McKinsey &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            <div class="insight-block">
+                <h4 class="font-space-grotesk text-xl font-bold text-[#003459] mb-2">Strategic Takeaway: Trust is Earned, Not Coded</h4>
+                <p class="text-gray-700">Employees don't trust AI; they trust (or distrust) the leaders deploying it. The data shows trust is highly contextual. Use AI to ensure fairness in low-stakes, routine tasks, but reserve high-stakes decisions (like hiring) for human judgment. Build trust through transparency and clear "human-in-the-loop" governance, not just better algorithms.</p>
+            </div>
+        </section>
+
+        <section id="maturity-curve" class="mb-16 md:mb-24">
+            <div class="max-w-3xl mb-12">
+                <h2 class="font-space-grotesk section-title mb-4">Navigating the AI Leadership Maturity Curve</h2>
+                <p class="text-lg text-gray-600">Achieving AI maturity is a journey of elevating human capability. Leadership focus must evolve in lockstep with technological integration, with a critical "chasm" between isolated pilots and enterprise-wide scaling where most initiatives fail.</p>
+            </div>
+            <div class="card">
+                <div class="chart-container h-96 md:h-[500px]">
+                    <canvas id="maturityCurveChart"></canvas>
+                </div>
+                <div class="source-link">
+                    <a href="https://hbr.org/2023/07/is-your-c-suite-ready-for-ai" target="_blank" class="font-space-mono text-xs text-gray-500 hover:text-[#007EA7] transition-colors">Source: HBR / Gartner &rarr;</a>
+                </div>
+            </div>
+             <div class="insight-block">
+                <h4 class="font-space-grotesk text-xl font-bold text-[#003459] mb-2">The Bottom Line: Lead the Culture, Not Just the Tech</h4>
+                <p class="text-gray-700">Progressing along the maturity curve is a leadership challenge, not a technical one. The "chasm" between small pilots and enterprise-wide scaling is where most AI strategies fail. Crossing it requires leaders to shift from funding projects to driving a deep, organization-wide cultural transformation rooted in psychological safety and a shared, human-centric vision.</p>
+            </div>
+        </section>
+
+        <footer class="text-left mt-12 pt-8 border-t-2 border-[#00A8E8]">
+            <h3 class="font-space-grotesk text-2xl font-bold text-[#003459]">The future is human-led and AI-powered.</h3>
+            <p class="text-gray-600 mt-2 max-w-2xl">The ultimate competitive advantage will not be found in the most sophisticated algorithms, but in cultivating the most engaged, empowered, and empathetic people to wield them.</p>
+            <div class="mt-6 text-xs text-gray-500">
+                <p>Data synthesized from reports by McKinsey & Company, Harvard Business Review, and Gartner.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const themeColors = {
+                brightBlue: '#00A8E8',
+                darkerBlue: '#007EA7',
+                deepNavy: '#003459',
+                white: '#FFFFFF',
+                pastelRed: '#F08080',
+                lightGray: '#f8f9fa'
+            };
+
+            Chart.defaults.font.family = 'Inter';
+            Chart.defaults.font.size = 12;
+            Chart.defaults.color = themeColors.deepNavy;
+
+            function wrapLabel(str, maxWidth) {
+                if (str.length <= maxWidth) {
+                    return str;
+                }
+                const words = str.split(' ');
+                const lines = [];
+                let currentLine = words[0];
+
+                for (let i = 1; i < words.length; i++) {
+                    if (currentLine.length + words[i].length + 1 < maxWidth) {
+                        currentLine += ' ' + words[i];
+                    } else {
+                        lines.push(currentLine);
+                        currentLine = words[i];
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            }
+
+            const defaultTooltipConfig = {
+                plugins: {
+                    tooltip: {
+                        backgroundColor: themeColors.deepNavy,
+                        titleColor: themeColors.white,
+                        bodyColor: themeColors.lightGray,
+                        boxPadding: 6,
+                        titleFont: { family: 'Space Grotesk' },
+                        bodyFont: { family: 'Inter' },
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            };
+
+            const demandCtx = document.getElementById('demandChart')?.getContext('2d');
+            if (demandCtx) {
+                new Chart(demandCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['United States', 'Europe'],
+                        datasets: [{
+                            label: 'Projected Growth in Demand for Social & Emotional Skills (2016-2030)',
+                            data: [26, 22],
+                            backgroundColor: [themeColors.brightBlue, themeColors.darkerBlue],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: { ...defaultTooltipConfig, responsive: true, maintainAspectRatio: false, plugins: { ...defaultTooltipConfig.plugins, legend: { display: false } }, scales: { y: { beginAtZero: true, title: { display: true, text: 'Percentage Growth (%)', font: { family: 'Inter' } } } } }
+                });
+            }
+
+            const roiCtx = document.getElementById('roiChart')?.getContext('2d');
+            if (roiCtx) {
+                new Chart(roiCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Employee Retention', 'Customer Satisfaction', 'Innovation Rates'],
+                        datasets: [{
+                            label: 'Performance Uplift with High-Empathy Leadership',
+                            data: [20, 20, 20],
+                            backgroundColor: 'rgba(0, 168, 232, 0.2)',
+                            borderColor: themeColors.brightBlue,
+                            pointBackgroundColor: themeColors.brightBlue,
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: themeColors.brightBlue,
+                            borderWidth: 2
+                        }]
+                    },
+                    options: { ...defaultTooltipConfig, responsive: true, maintainAspectRatio: false, plugins: { ...defaultTooltipConfig.plugins, legend: { display: false } }, scales: { r: { beginAtZero: true, max: 25, pointLabels: { font: { family: 'Inter', size: 13, weight: '600' } }, ticks: { stepSize: 5, backdropColor: themeColors.lightGray } } } }
+                });
+            }
+
+            const confidenceGapCtx = document.getElementById('confidenceGapChart')?.getContext('2d');
+            if (confidenceGapCtx) {
+                new Chart(confidenceGapCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['CEOs Who See AI as Future', 'CEOs Who View CIO as "AI-Savvy"'],
+                        datasets: [{
+                            label: 'Percentage of CEOs',
+                            data: [77, 44],
+                            backgroundColor: [themeColors.darkerBlue, themeColors.pastelRed],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: { ...defaultTooltipConfig, responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { ...defaultTooltipConfig.plugins, legend: { display: false } }, scales: { x: { beginAtZero: true, max: 100, title: { display: true, text: 'Percentage (%)', font: { family: 'Inter' } } } } }
+                });
+            }
+
+            const supportGapCtx = document.getElementById('supportGapChart')?.getContext('2d');
+            if (supportGapCtx) {
+                new Chart(supportGapCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Feel More Supported by AI', 'Feel More Supported by Human Boss'],
+                        datasets: [{ data: [43, 57], backgroundColor: [themeColors.pastelRed, themeColors.brightBlue], borderColor: themeColors.white, borderWidth: 4 }]
+                    },
+                    options: { ...defaultTooltipConfig, responsive: true, maintainAspectRatio: false, cutout: '60%', plugins: { ...defaultTooltipConfig.plugins, legend: { position: 'bottom', labels: { font: { family: 'Inter' } } } } }
+                });
+            }
+
+            const feedbackTrustCtx = document.getElementById('feedbackTrustChart')?.getContext('2d');
+            if (feedbackTrustCtx) {
+                new Chart(feedbackTrustCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Trust AI for Fairer Feedback', 'Prefer Human Feedback'],
+                        datasets: [{ data: [87, 13], backgroundColor: [themeColors.brightBlue, themeColors.lightGray], borderColor: themeColors.white, borderWidth: 4 }]
+                    },
+                    options: { ...defaultTooltipConfig, responsive: true, maintainAspectRatio: false, cutout: '60%', plugins: { ...defaultTooltipConfig.plugins, legend: { display: false }, title: { display: true, text: 'For Performance Feedback', font: { family: 'Space Grotesk', size: 16, weight: '700' } } } }
+                });
+            }
+
+            const hiringTrustCtx = document.getElementById('hiringTrustChart')?.getContext('2d');
+            if (hiringTrustCtx) {
+                new Chart(hiringTrustCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Trust AI in Hiring', 'Do Not Trust AI in Hiring'],
+                        datasets: [{ data: [26, 74], backgroundColor: [themeColors.pastelRed, themeColors.lightGray], borderColor: themeColors.white, borderWidth: 4 }]
+                    },
+                    options: { ...defaultTooltipConfig, responsive: true, maintainAspectRatio: false, cutout: '60%', plugins: { ...defaultTooltipConfig.plugins, legend: { display: false }, title: { display: true, text: 'For Hiring Decisions', font: { family: 'Space Grotesk', size: 16, weight: '700' } } } }
+                });
+            }
+
+            const trustBarometerCtx = document.getElementById('trustBarometerChart')?.getContext('2d');
+            if (trustBarometerCtx) {
+                new Chart(trustBarometerCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: wrapLabel('Their Own Employer', 16).concat(wrapLabel('Universities', 16), wrapLabel('Large Tech Companies', 16), wrapLabel('Tech Start-ups', 16)),
+                        datasets: [{ label: 'Trust in Ethical AI Deployment', data: [71, 67, 61, 51], backgroundColor: [themeColors.brightBlue, themeColors.darkerBlue, themeColors.deepNavy, themeColors.pastelRed], borderRadius: 4 }]
+                    },
+                    options: { ...defaultTooltipConfig, responsive: true, maintainAspectRatio: false, plugins: { ...defaultTooltipConfig.plugins, legend: { display: false } }, scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: 'Employees Who Trust (%)', font: { family: 'Inter' } } } } }
+                });
+            }
+
+            const maturityCurveCtx = document.getElementById('maturityCurveChart')?.getContext('2d');
+            if (maturityCurveCtx) {
+                new Chart(maturityCurveCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Stage 1: Foundational', 'Stage 2: Integrated', 'Stage 3: Scaled', 'Stage 4: Transformational'],
+                        datasets: [{
+                            label: 'Leadership Focus & Empathy Integration',
+                            data: [1, 3, 7, 10],
+                            fill: true,
+                            backgroundColor: 'rgba(0, 126, 167, 0.2)',
+                            borderColor: themeColors.darkerBlue,
+                            tension: 0.4,
+                            pointRadius: 6,
+                            pointBackgroundColor: themeColors.pastelRed,
+                            pointBorderColor: themeColors.deepNavy,
+                            pointBorderWidth: 2,
+                        }]
+                    },
+                    options: { ...defaultTooltipConfig, responsive: true, maintainAspectRatio: false, plugins: { ...defaultTooltipConfig.plugins, legend: { display: false }, annotation: { annotations: { chasm: { type: 'box', xMin: 1.3, xMax: 1.7, yMin: 2, yMax: 5, backgroundColor: 'rgba(240, 128, 128, 0.15)', borderColor: themeColors.pastelRed, borderWidth: 1, borderDash: [6, 6] }, chasmLabel: { type: 'label', xValue: 1.5, yValue: 3.5, content: wrapLabel('The AI Maturity Chasm', 16), color: themeColors.deepNavy, font: { family: 'Space Grotesk', size: 14, weight: 'bold' }, position: 'center' } } } }, scales: { y: { min: 0, max: 11, ticks: { stepSize: 2.75, callback: function(value, index, ticks) { const labels = ['', 'Process Control & Tech Literacy', 'Cultural Enablement', 'Strategic Vision & Ecosystem Shaping', '']; return labels[index]; } } }, x: { grid: { display: false } } } }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
